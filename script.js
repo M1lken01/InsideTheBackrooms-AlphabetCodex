@@ -33,7 +33,7 @@ function letter(correct) {
         alphabet[Math.floor(Math.random() * alphabet.length)];
     document.getElementById("help").innerHTML = "Help";
     document.getElementById("input").value = "";
-    document.getElementById("letter").src = letters/Error_screen_Letter_" + currentLetter + ".png";
+    document.getElementById("letter").src = "letters / Error_screen_Letter_ " + currentLetter + ".png ";
 }
 
 function help() {
