@@ -7,10 +7,10 @@ function enter() {
     if (i.length > 1) {
         i = i.split("")[0];
     }
+    document.getElementById("input").value = "";
     if (currentLetter.toLowerCase() == i) {
         letter(true);
     }
-    document.getElementById("input").value = "";
 }
 
 function letter(correct) {
@@ -20,8 +20,6 @@ function letter(correct) {
         document.getElementById("score").innerHTML = "26/" + score
         if (score == 26) {
             document.getElementById("letter").src = "letters/Computer_Error_screen.png";
-            document.getElementById("test").innerHTML += '<button onclick="reset()">Reset</button><br>'
-                //document.getElementById("reset").classList.remove("hidden");
             document.getElementById("new").remove();
             document.getElementById("help").remove();
             document.getElementById("input").remove();
@@ -35,8 +33,7 @@ function letter(correct) {
         alphabet[Math.floor(Math.random() * alphabet.length)];
     document.getElementById("help").innerHTML = "Help";
     document.getElementById("input").value = "";
-    document.getElementById("letter").src =
-        "letters/Error_screen_Letter_" + currentLetter + ".png";
+    document.getElementById("letter").src = letters/Error_screen_Letter_" + currentLetter + ".png";
 }
 
 function help() {
