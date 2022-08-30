@@ -44,5 +44,5 @@ function help() {
 }
 
 function reset() {
-
+    window.location.reload();
 }
