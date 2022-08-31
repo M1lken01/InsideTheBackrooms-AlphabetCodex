@@ -1,20 +1,40 @@
-const hard = false;
+var hard = false;
+let maxScore = 0;
 let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 let currentLetter = "A";
-let score = 26 - alphabet.length;
+let score = 0;
 let miss = 0;
+let pass = ""
+
+function start(idx) {
+    switch (idx) {
+        case "pass":
+            maxScore = 5;
+            code();
+            break;
+        case "solo":
+            maxScore = alphabet.length;
+            letter(0);
+            break;
+    }
+}
 
 function enter() {
     i = document.getElementById("input").value;
-    if (i.length > 1) {
-        i = i.split("")[0];
-    }
     document.getElementById("input").value = "";
-    if (currentLetter.toLowerCase() == i) {
-        letter(true);
-    } else {
-        if (hard) {
-            letter(false);
+    if (i.length == 1) {
+        if (currentLetter.toLowerCase() == i.toLowerCase()) {
+            letter(true);
+        } else {
+            if (hard) {
+                letter(false);
+            }
+        }
+    } else if (i.length == 6) {
+        if (pass.toLowerCase() == i.toLowerCase()) {
+            alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            score += 1;
+            code();
         }
     }
 }
@@ -29,13 +49,8 @@ function letter(correct) {
         document.getElementById("score").innerHTML = "Score: 26/" + score.toString().padStart(2, 0);
         if (alphabet == "") {
             document.getElementById("letter").src = "letters/Computer_Error_screen.png";
-            document.getElementById("abc").innerHTML = "no letter left";
-            document.getElementById("new").remove();
-            document.getElementById("help").remove();
-            document.getElementById("input").remove();
-            while (document.getElementsByClassName("br").length > 1) {
-                document.getElementsByClassName("br")[1].remove();
-            }
+            document.getElementById("length").innerHTML = "Remaining: " + alphabet.length;
+            end();
             return;
         }
     }
@@ -43,7 +58,34 @@ function letter(correct) {
     document.getElementById("help").innerHTML = "Help";
     document.getElementById("input").value = "";
     document.getElementById("letter").src = "letters/Error_screen_Letter_" + currentLetter + ".png ";
-    document.getElementById("abc").innerHTML = alphabet;
+    document.getElementById("length").innerHTML = "Remaining: " + alphabet.length;
+}
+
+function code() {
+    pass = ""
+    document.getElementById("score").innerHTML = "Score: " + maxScore + "/" + score.toString();
+    document.getElementById("length").innerHTML = "Remaining: " + (maxScore - score).toString();
+    for (let i = 0; i < document.getElementsByClassName("letter").length; i++) {
+        currentLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+        pass += currentLetter
+        alphabet = alphabet.split(currentLetter).join("");
+        document.getElementsByClassName("letter")[i].src = "letters/Error_screen_Letter_" + currentLetter + ".png ";
+    }
+    if (score == 5) {
+        for (let i = 0; i < document.getElementsByClassName("letter").length; i++) {
+            document.getElementsByClassName("letter")[i].src = "letters/Computer_Error_screen.png";
+        }
+        end();
+    }
+}
+
+function end() {
+    document.getElementById("new").remove();
+    document.getElementById("help").remove();
+    document.getElementById("input").remove();
+    while (document.getElementsByClassName("br").length > 1) {
+        document.getElementsByClassName("br")[1].remove();
+    }
 }
 
 function help() {

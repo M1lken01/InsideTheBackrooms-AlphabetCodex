@@ -11,14 +11,16 @@
     <link rel="icon" type="image/x-icon" href="icon.png" />
 </head>
 
-<body onload="letter(0)">
-    <div id="test">
+<body onload="start('solo')">
+    <div id="header">
         <h2><a href="https://github.com/M1lken01/InsideTheBackrooms-AlphabetCodex">Inside The Backrooms - Alphabet Codex Helper</a></h2>
         <h4><a href="https://github.com/M1lken01">by M1lken01</a></h4>
-        <h5 id="abc">ABCDEFGHIJKLMNOPQRSTUVWXYZ</h5>
+    </div>
+    <div id="content">
+        <h5 id="length">Remaining: 26</h5>
         <h2 id="score">Score: 26/00</h2>
         <img src="letters/Computer_Error_screen.png" alt="letter" id="letter" width="512px" /><br class="br" />
-        <input type="text" name="" id="input" onchange="enter()" /><br class="br" />
+        <input type="text" name="" id="input" onchange="enter()" placeholder="..." /><br class="br" />
         <button onclick="help()" id="help">Help</button><br class="br" />
         <button onclick="letter(false)" id="new">Skip</button><br class="br" />
         <button onclick="reset()" id="reset">Reset</button>
