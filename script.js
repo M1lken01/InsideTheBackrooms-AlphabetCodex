@@ -32,7 +32,6 @@ function enter() {
         }
     } else if (i.length == 6) {
         if (pass.toLowerCase() == i.toLowerCase()) {
-            alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             score += 1;
             code();
         }
@@ -62,6 +61,7 @@ function letter(correct) {
 }
 
 function code() {
+    alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     pass = ""
     document.getElementById("score").innerHTML = "Score: " + maxScore + "/" + score.toString();
     document.getElementById("length").innerHTML = "Remaining: " + (maxScore - score).toString();
