@@ -1,10 +1,12 @@
 var hard = false;
+var stop = true;
 let maxScore = 0;
 let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 let currentLetter = "A";
 let score = 0;
 let miss = 0;
-let pass = ""
+let pass = "";
+let s = 0;
 
 function start(idx) {
     switch (idx) {
@@ -22,6 +24,10 @@ function start(idx) {
 function enter() {
     i = document.getElementById("input").value;
     document.getElementById("input").value = "";
+    if (stop) {
+        stop = false;
+        ticking();
+    }
     if (i.length == 1) {
         if (currentLetter.toLowerCase() == i.toLowerCase()) {
             letter(true);
@@ -79,7 +85,18 @@ function code() {
     }
 }
 
+function ticking() {
+    if (!stop) {
+        s += 1;
+        var mins = (s / 60).toFixed().toString().padStart(2, 0);
+        var secs = (60 * (s / 60) - (60 * (s / 60).toFixed())).toString().padStart(2, 0);
+        document.getElementById("time").innerHTML = mins + ":" + secs;
+        setTimeout("ticking()", 1000);
+    }
+}
+
 function end() {
+    stop = true;
     document.getElementById("new").remove();
     document.getElementById("help").remove();
     document.getElementById("input").remove();
