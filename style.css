@@ -121,6 +121,11 @@ button:hover {
     .img-large {
         width: 80vw;
     }
+    .img-small {
+        width: 28vw;
+        padding: 0px;
+        padding-top: 8px;
+    }
     input,
     button {
         width: 78vw;
