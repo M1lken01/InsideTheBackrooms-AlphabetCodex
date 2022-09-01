@@ -83,3 +83,35 @@ button {
 button:hover {
     cursor: pointer;
 }
+
+.img-large {
+    width: 512px;
+}
+
+.img-small {
+    width: 256px;
+}
+
+@media screen and (max-width: 565px) {
+    .img-large {
+        width: 80vw;
+    }
+    input,
+    button {
+        width: 78vw;
+        transition: 0.2s;
+        -webkit-transition: 0.2s;
+        -moz-transition: 0.2s;
+        -ms-transition: 0.2s;
+        -o-transition: 0.2s;
+    }
+    input:hover,
+    button:hover {
+        width: 80vw;
+        transition: 0.2s;
+        -webkit-transition: 0.2s;
+        -moz-transition: 0.2s;
+        -ms-transition: 0.2s;
+        -o-transition: 0.2s;
+    }
+}
