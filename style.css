@@ -92,7 +92,32 @@ button:hover {
     width: 256px;
 }
 
+#split {
+    border: #53a059 1px solid;
+    border-radius: 90vw;
+    width: 80vw;
+    -webkit-border-radius: 90vw;
+    -moz-border-radius: 90vw;
+    -ms-border-radius: 90vw;
+    -o-border-radius: 90vw;
+}
+
 @media screen and (max-width: 565px) {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin-bottom: 0px;
+        margin-top: 8px;
+    }
+    h2 {
+        font-size: 7vw;
+    }
+    h4 {
+        font-size: 6vw;
+    }
     .img-large {
         width: 80vw;
     }
