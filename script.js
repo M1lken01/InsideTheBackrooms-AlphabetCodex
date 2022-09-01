@@ -88,7 +88,7 @@ function code() {
 function ticking() {
     if (!stop) {
         s += 1;
-        var mins = (s / 60).toFixed().toString().padStart(2, 0);
+        var mins = (s / 60).toString().split(".")[0].padStart(2, 0);
         var secs = (60 * (s / 60) - (60 * (s / 60).toFixed())).toString().padStart(2, 0);
         document.getElementById("time").innerHTML = mins + ":" + secs;
         setTimeout("ticking()", 1000);
